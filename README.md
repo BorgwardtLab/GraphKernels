@@ -7,7 +7,7 @@ Code for implementing different Graph Kernels
 This repository contains Matlab scripts for computing several graph kernels for graphs with unlabeled or 
 categorically labeled nodes and scripts for evaluating the SVM classification performance using 
 precomputed kernels using cross-validation. In the folder "data" we provide 5 data sets of undirected labeled graphs in Matlab format for graph 
-classification which can be used for testing the scripts. 
+classification which can be used for testing the scripts. More information, code and data can be found on the webpage. https://www.bsse.ethz.ch/mlcb/research/machine-learning/graph-kernels.html
 
 # Usage
 
