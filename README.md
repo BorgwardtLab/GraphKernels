@@ -13,6 +13,25 @@ classification which can be used for testing the scripts. More information, code
 
 "help X.m" executed in Matlab will display instructions on the usage of X.m for any script X.m
 
+# Implemented Graph Kernels
+
+For unlabeled graphs the following implementations are available:
+- the family of graphlet kernels (subfolders allgraphlets, connectedgraphlets, samplinggraphlets) from [6]
+- the random walk kernel (RWkernel.m) from [7]
+- the shortest path kernel (SPkernel_unlabeled.m) from [1]
+
+For labeled graphs the following implementations are available:
+- 3 kernels from the Weisfeiler-Lehman kernel family: the WL subtree (WL.m), the WL shortest path (WLspdelta.m), 
+  and the WL edge (WLedge.m) kernels from [5]
+- the labeled 3-node graphlet kernel (l3graphletkernel.m) - extension of an algorithm in [6]
+- the labeled random walk kernel (lRWkernel.m) from [7]
+- the labeled random walk kernel based on walks up to size p (untilpRWkernel.m) - extension of [2],[3]
+- the labeled shortest path kernel (lSPkernel.m) from [1]
+- the Ramon and Gaertner subtree kernel (RGkernel.m) from [4]
+
+Note that all WL kernels also support unlabeled graphs.
+
+
 # References
 [1] K. M. Borgwardt and H.-P. Kriegel. 
     Shortest-path kernels on graphs. In Proceedings of the International Conference on Data Mining, 
