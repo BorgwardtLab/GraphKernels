@@ -18,7 +18,7 @@ classification which can be used for testing the scripts. More information, code
 For unlabeled graphs the following implementations are available:
 - the family of graphlet kernels (subfolders allgraphlets, connectedgraphlets, samplinggraphlets) from [6]
 - the random walk kernel (RWkernel.m) from [7]
-- the shortest path kernel (SPkernel_unlabeled.m) from [1]
+- the shortest path kernel (SPkernel.m) from [1]
 
 For labeled graphs the following implementations are available:
 - 3 kernels from the Weisfeiler-Lehman kernel family: the WL subtree (WL.m), the WL shortest path (WLspdelta.m), 
