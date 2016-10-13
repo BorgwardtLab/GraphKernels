@@ -69,5 +69,5 @@ ETH Zürich, D-BSSE, Machine Learning and Computational Biology Lab
 
 elisabetta.ghisu@bsse.ethz.ch
 
-For technical questions on the code you can refer to the corresponding authors
+This repository contains codes from different authors. Please, refer to them for technical questions.
 
