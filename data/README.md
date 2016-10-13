@@ -1,9 +1,11 @@
 # Introduction
 
-This folder contains 5 data sets of undirected labeled graphs in Matlab format for graph
+This folder contains 5 data sets of undirected labeled graphs in Matlab and Graphml format for graph
 classification: MUTAG, NCI1, NCI109, ENZYMES, and D&D.
 
 # Usage
+
+MATLAB
 
 For each data set X, the Matlab command
   load X
@@ -18,6 +20,10 @@ Example:
 typing "load MUTAG" in MATLAB
 loads a 188 element array of graph structures, called MUTAG, and a column of 188 numbers, 
 each of which indicates the class that the corresponding graph belongs to.
+
+GRAPHML
+
+The same datasets are also provided in Graphml format. For each dataset X, the X folder contains graphml data files for each graph in the dataset. The file X is a list pointing to such files; the X labels files contain information on the target for each graph in the dataset.  
 
 # Description
 
