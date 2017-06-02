@@ -2,9 +2,16 @@
 
 # graphkernels 
 
-graphkernels is a Python package fro computing graphkernels
+graphkernels is a Python package for computing graphkernels
 
-This folder contains the c++, swig and python source code 
+This folder contains the Python code only
 
+# Installation
+
+pip install graphkernels
+
+# Requirements
+
+GKextCPy
 
 
