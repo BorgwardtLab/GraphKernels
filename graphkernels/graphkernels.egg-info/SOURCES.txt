@@ -1,0 +1,9 @@
+setup.py
+graphkernels/__init__.py
+graphkernels/graphkernels.py
+graphkernels/utilities.py
+graphkernels.egg-info/PKG-INFO
+graphkernels.egg-info/SOURCES.txt
+graphkernels.egg-info/dependency_links.txt
+graphkernels.egg-info/requires.txt
+graphkernels.egg-info/top_level.txt
