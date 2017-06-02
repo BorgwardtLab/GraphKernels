@@ -1,25 +1,10 @@
-#####################################################
-
-graphkernels is a Python package for computing various kernels on graph
-
-The source code is in C++ and we use SWIG to create a Wrapper for Python
-
- 
-Requirements:
 
 
-Installation:
+# graphkernels 
+
+graphkernels is a Python package fro computing graphkernels
+
+This folder contains the c++, swig and python source code 
 
 
 
-
-Information:
-
-- data contains an example dataset MUTAG that can be used for testing the package
-- src: conctain the source code for C++ (and swig wrapper to python) and the python package
-
-
-
-Authors:
-Mahito Sugiyama (C++)
-Elisabetta Ghisu (Python)
