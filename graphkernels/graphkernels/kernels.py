@@ -111,45 +111,48 @@ def CalculateVertexEdgeHistGaussKernel(G, par = 1):
 	
 	return K
 
-"""
 
-def CalculateGeometricRandomWalkKernel(G, par):
+
+def CalculateGeometricRandomWalkKernel(G, par = 1):
 	
-	graph_info_list = []
+	# Extract graph info
+	E, V_label, V_count, E_count, D_max = GetGKInput(G)
 
-	for i in xrange(len(G)):
-		# Extract list of vertex and edges
-		graph_info_list.append(GetGraphInfo(G[i]))
-
-	K = CalculateKernelCpp(graph_info_list, par, 8)
+	par = gkCpy.DoubleVector([par])
+		
+	K = gkCpy.CalculateKernelPy(E, V_label, V_count, E_count, D_max, par, 8)
+	
 	return K
 
 
 
-def CalculateExponentialRandomWalkKernel(G, par):
+def CalculateExponentialRandomWalkKernel(G, par=1):
 	
-	graph_info_list = []
+	# Extract graph info
+	E, V_label, V_count, E_count, D_max = GetGKInput(G)
 
-	for i in xrange(len(G)):
-		# Extract list of vertex and edges
-		graph_info_list.append(GetGraphInfo(G[i]))
-
-	K = CalculateKernelCpp(graph_info_list, par, 9)
+	par = gkCpy.DoubleVector([par])
+		
+	K = gkCpy.CalculateKernelPy(E, V_label, V_count, E_count, D_max, par, 9)
+	
 	return K
 
-def CalculateKStepRandomWalkKernel(G, par):
+def CalculateKStepRandomWalkKernel(G, par=1):
 	
-	graph_info_list = []
+	# Extract graph info
+	E, V_label, V_count, E_count, D_max = GetGKInput(G)
+	
+	if isinstance(par, (int, long, float, complex)):
+		par = gkCpy.DoubleVector([par])
 
-	for i in xrange(len(G)):
-		# Extract list of vertex and edges
-		graph_info_list.append(GetGraphInfo(G[i]))
-
-	K = CalculateKernelCpp(graph_info_list, par, 10)
+	else:
+		par = gkCpy.DoubleVector(par)
+		
+	K = gkCpy.CalculateKernelPy(E, V_label, V_count, E_count, D_max, par, 10)
+	
 	return K
 
 
-"""
 
 def CalculateWLKernel(G, par = 5):
 

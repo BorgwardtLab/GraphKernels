@@ -12,6 +12,7 @@ pip install graphkernels
 
 # Requirements
 
-GKextCPy
-
+- SWIG
+- GKextCPy
+- C++ compiler
 

@@ -42,30 +42,43 @@ int productMapping(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int
 }
 
 
-/*
-// compute the adjacency matrix Ax of the direct product graph (sparse)
-void productAdjacency(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, MatrixXi& H, SparseMatrix<double>& Ax) {
+
+
+
+//compute the adjacency matrix Ax of the direct product graph (sparse)
+MatrixXd productAdjacency(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, MatrixXi& H) {
+  
+  int n_vx = v1_label.size()*v2_label.size();
+  
+  SparseMatrix<double> Ax(n_vx, n_vx);
+  MatrixXd dAx;
+
   vector<T> v;
+
+  
   for (int i = 0; i < e1.rows(); i++) {
     for (int j = 0; j < e2.rows(); j++) {      
       if (   v1_label[e1(i, 0)] == v2_label[e2(j, 0)]
-	  && v1_label[e1(i, 1)] == v2_label[e2(j, 1)]
-	  && e1(i, 2) == e2(j, 2)) {
-	v.push_back(T(H(e1(i, 0), e2(j, 0)), H(e1(i, 1), e2(j, 1)), 1.0));
-	v.push_back(T(H(e1(i, 1), e2(j, 1)), H(e1(i, 0), e2(j, 0)), 1.0));
-      }
+    && v1_label[e1(i, 1)] == v2_label[e2(j, 1)]
+    && e1(i, 2) == e2(j, 2)) {
+  v.push_back(T(H(e1(i, 0), e2(j, 0)), H(e1(i, 1), e2(j, 1)), 1.0));
+  v.push_back(T(H(e1(i, 1), e2(j, 1)), H(e1(i, 0), e2(j, 0)), 1.0));
+    }
       if (   v1_label[e1(i, 0)] == v2_label[e2(j, 1)]
-	  && v1_label[e1(i, 1)] == v2_label[e2(j, 0)]
-	  && e1(i, 2) == e2(j, 2)) {
-	v.push_back(T(H(e1(i, 0), e2(j, 1)), H(e1(i, 1), e2(j, 0)), 1.0));
-	v.push_back(T(H(e1(i, 1), e2(j, 0)), H(e1(i, 0), e2(j, 1)), 1.0));
+    && v1_label[e1(i, 1)] == v2_label[e2(j, 0)]
+    && e1(i, 2) == e2(j, 2)) {
+  v.push_back(T(H(e1(i, 0), e2(j, 1)), H(e1(i, 1), e2(j, 0)), 1.0));
+  v.push_back(T(H(e1(i, 1), e2(j, 0)), H(e1(i, 0), e2(j, 1)), 1.0));
       }
     }
-  }
+ }
+
   Ax.setFromTriplets(v.begin(), v.end());
+  dAx = MatrixXd(Ax);
+  
+  return dAx;
 }
 
-*/
 
 
 // bucket sort used in Weisfeiler-Leiman graph kernel
@@ -181,13 +194,13 @@ double vertexVertexEdgeHistogramKernel(MatrixXi& e1, MatrixXi& e2, vector<int>& 
 
 
 
-/*
+
 
 // geometric random walk karnel
-double geometricRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<Int>& v1_label, vector<Int>& v2_label, double lambda) {
+double geometricRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, double lambda) {
   // map each product (v_1, v_2) of vertics to a number H(v_1, v_2)
   MatrixXi H(v1_label.size(), v2_label.size());  
-  Int n_vx = productMapping(e1, e2, v1_label, v2_label, H);
+  int n_vx = productMapping(e1, e2, v1_label, v2_label, H);
 
   // prepare identity matrix
   SparseMatrix<double> I(n_vx, n_vx);
@@ -195,16 +208,19 @@ double geometricRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<Int>& v1_lab
 
   // compute the adjacency matrix Ax of the direct product graph
   SparseMatrix<double> Ax(n_vx, n_vx);
-  productAdjacency(e1, e2, v1_label, v2_label, H, Ax);
+  MatrixXd dAx(n_vx, n_vx);
+  
+  dAx = productAdjacency(e1, e2, v1_label, v2_label, H);
+  Ax = dAx.sparseView();
 
   // inverse of I - lambda * Ax by fixed-poInt iterations
   VectorXd I_vec(n_vx);
-  for (Int i  = 0; i < n_vx; i++) I_vec[i] = 1;
+  for (int i  = 0; i < n_vx; i++) I_vec[i] = 1;
   VectorXd x = I_vec;
   VectorXd x_pre(n_vx); x_pre.setZero();
 
   double eps = pow(10, -10);
-  Int count = 0;
+  int count = 0;
   while ((x - x_pre).squaredNorm() > eps) {
     if (count > 100) {
       // cout << "does not converge until " << count - 1 << " iterations" << endl;
@@ -216,15 +232,20 @@ double geometricRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<Int>& v1_lab
   }
   return x.sum();
 }
+
+
 // exponential random walk karnel
-double exponentialRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<Int>& v1_label, vector<Int>& v2_label, double beta) {
+double exponentialRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, double beta) {
   // map each product (v_1, v_2) of vertics to a number H(v_1, v_2)
   MatrixXi H(v1_label.size(), v2_label.size());  
-  Int n_vx = productMapping(e1, e2, v1_label, v2_label, H);
+  int n_vx = productMapping(e1, e2, v1_label, v2_label, H);
 
   // compute the adjacency matrix Ax of the direct product graph
   SparseMatrix<double> Ax(n_vx, n_vx);
-  productAdjacency(e1, e2, v1_label, v2_label, H, Ax);
+  MatrixXd dAx(n_vx, n_vx);
+
+  dAx = productAdjacency(e1, e2, v1_label, v2_label, H);
+  Ax = dAx.sparseView();
 
   // compute e^{beta * Ax}
   SelfAdjointEigenSolver<MatrixXd> es(Ax);
@@ -240,19 +261,21 @@ double exponentialRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<Int>& v1_l
 
   // compute the total sum
   double K = 0;
-  for (Int i = 0; i < Res.rows(); i++) {
-    for (Int j = 0; j < Res.cols(); j++) {
+  for (int i = 0; i < Res.rows(); i++) {
+    for (int j = 0; j < Res.cols(); j++) {
       K += Res(i, j);
     }
   }
 
   return K;
 }
+
+
 // k-step product graph karnel
-double kstepRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<Int>& v1_label, vector<Int>& v2_label, vector<double>& lambda_list) {
+double kstepRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, vector<double>& lambda_list) {
   // map each product (v_1, v_2) of vertics to a number H(v_1, v_2)
   MatrixXi H(v1_label.size(), v2_label.size());
-  Int n_vx = productMapping(e1, e2, v1_label, v2_label, H);
+  int n_vx = productMapping(e1, e2, v1_label, v2_label, H);
 
   // prepare identity matrix
   SparseMatrix<double> I(n_vx, n_vx);
@@ -260,20 +283,23 @@ double kstepRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<Int>& v1_label, 
 
   // compute the adjacency matrix Ax of the direct product graph
   SparseMatrix<double> Ax(n_vx, n_vx);
-  productAdjacency(e1, e2, v1_label, v2_label, H, Ax);
+  MatrixXd dAx(n_vx, n_vx);
+
+  dAx = productAdjacency(e1, e2, v1_label, v2_label, H);
+  Ax = dAx.sparseView();
 
   // compute products until k
-  Int k_max = (Int)lambda_list.size() - 1;
+  int k_max = (int)lambda_list.size() - 1;
   SparseMatrix<double> Ax_pow = I;
   SparseMatrix<double> Sum = lambda_list[0] * I;
-  for (Int k = 1; k <= k_max; k++) {
+  for (int k = 1; k <= k_max; k++) {
     Ax_pow = Ax * Ax_pow;
     Sum += lambda_list[k] * Ax_pow;
   }
 
   // compute the total sum
   double K = 0;
-  for (Int i = 0; i < Sum.outerSize(); ++i) {
+  for (int i = 0; i < Sum.outerSize(); ++i) {
     for (SparseMatrix<double>::InnerIterator it(Sum, i); it; ++it) {
       K += it.value();
     }
@@ -282,8 +308,6 @@ double kstepRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<Int>& v1_label, 
   return K;
 }
 
-
-*/
 
 
 // Weisfeiler-Leiman graph kernel
@@ -435,7 +459,7 @@ double computeKernelValue(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vec
   case 7: // vertex-edge histogram kernel (Gaussian)
     Kval = vertexEdgeHistogramKernel(e1, e2, v1_label, v2_label, par[0]);
     break;
-   /* 
+  
   case 8: // geometric random walk kernel
     Kval = geometricRandomWalkKernel(e1, e2, v1_label, v2_label, par[0]);
     break;
@@ -445,7 +469,6 @@ double computeKernelValue(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vec
   case 10: // k-step random walk kernel
     Kval = kstepRandomWalkKernel(e1, e2, v1_label, v2_label, par);
     break;
-  */
   default:
     Kval = 0;
     break;

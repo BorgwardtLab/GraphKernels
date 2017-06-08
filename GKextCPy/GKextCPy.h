@@ -54,15 +54,21 @@ double selectLinearGaussian(vector<int>& h1, vector<int>& h2, double sigma);
 
 int productMapping(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, MatrixXi& H);
 
-//void productAdjacency(MatrixXi& e1, MatrixXi& e2, vector<Int>& v1_label, vector<Int>& v2_label, MatrixXi& H, SparseMatrix<double>& Ax);
+MatrixXd productAdjacency(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, MatrixXi& H);
 
 void bucketsort(vector<int>& x, vector<int>& index, int label_max);
+
+
 
 //All the kernel functions 
 double edgeHistogramKernel(MatrixXi& e1, MatrixXi& e2, double sigma);
 double vertexHistogramKernel(vector<int>& v1_label, vector<int>& v2_label, double sigma);
 double vertexEdgeHistogramKernel(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, double sigma);
 double vertexVertexEdgeHistogramKernel(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, double lambda);
+
+double geometricRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, double lambda);
+double exponentialRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, double beta);
+double kstepRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, vector<double>& lambda_list);
 
 MatrixXd WLKernelMatrix(vector<MatrixXi>& E, vector<vector<int> >& V_label, vector<int>& num_v, vector<int>& num_e, vector<int>& degree_max, int h_max);
 

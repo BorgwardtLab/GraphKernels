@@ -42,7 +42,7 @@ namespace std {
 double selectLinearGaussian(vector<int>& h1, vector<int>& h2, double sigma);
 int productMapping(Eigen::MatrixXi& e1, Eigen::MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, Eigen::MatrixXi& H);
 
-/*void productAdjacency(Eigen::MatrixXi& e1, Eigen::MatrixXi& e2, vector<Int>& v1_label, vector<Int>& v2_label, Eigen::MatrixXi& H, Eigen::SparseMatrix<double>& Ax);*/
+Eigen::MatrixXd productAdjacency(Eigen::MatrixXi& e1, Eigen::MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, Eigen::MatrixXi& H);
 
 void bucketsort(vector<int>& x, vector<int>& index, int label_max);
 
@@ -52,6 +52,9 @@ double vertexHistogramKernel(vector<int>& v1_label, vector<int>& v2_label, doubl
 double vertexEdgeHistogramKernel(Eigen::MatrixXi& e1, Eigen::MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, double sigma);
 double vertexVertexEdgeHistogramKernel(Eigen::MatrixXi& e1, Eigen::MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, double lambda);
 
+double geometricRandomWalkKernel(Eigen::MatrixXi& e1, Eigen::MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, double lambda);
+double exponentialRandomWalkKernel(Eigen::MatrixXi& e1, Eigen::MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, double beta);
+double kstepRandomWalkKernel(Eigen::MatrixXi& e1, Eigen::MatrixXi& e2, vector<int>& v1_label, vector<int>& v2_label, vector<double>& lambda_list);
 
 Eigen::MatrixXd WLKernelMatrix(vector<Eigen::MatrixXi>& E, vector<vector<int> >& V_label, vector<int>& num_v, vector<int>& num_e, vector<int>& degree_max, int h_max);
 
