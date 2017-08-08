@@ -4,9 +4,7 @@ The file demo_mutag.py can be executed as
 
 python demo_mutag.py
 
-assuming 
-
-will compute all the available kernels on the benchmark mutag dataset. 
+The script will compute all the available kernels on the benchmark mutag dataset. 
 
 The data that the graph kernels funcitons require as input, should be a list of igraph objects, as provided in the file data.mutag. This example file is available here in the tutorial, but will also be downloaded together with the package. 
 
