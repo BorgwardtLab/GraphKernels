@@ -15,7 +15,7 @@ mutag_list = np.load("graphkernels/data.mutag")
 ### ALL KERNELS COMPUTE
 
 K1 = gk.CalculateEdgeHistKernel(mutag_list)
-K2 = gk.CalculateVertexHistKernel(mutag_list)
+K2 = gk.CalculateVertexHistKernel(mutag_list) 
 K3 = gk.CalculateVertexEdgeHistKernel(mutag_list)
 K4 = gk.CalculateVertexVertexEdgeHistKernel(mutag_list)
 K5 = gk.CalculateEdgeHistGaussKernel(mutag_list)
