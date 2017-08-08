@@ -25,4 +25,6 @@ Note that graphkernels is a Python library relying on C++ source code. The wrapp
 - igraph
 - numpy
 
+# Usage
 
+Please have a look at https://github.com/eghisu/GraphKernels/tree/master/graphkernelsTutorial for a short tutorial on the basic usage of our package. Here, we provide an example script for computing graph kernels through our package on a benchmark dataset. 
