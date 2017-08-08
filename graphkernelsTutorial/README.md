@@ -10,6 +10,8 @@ The data that the graph kernels functions require as input, should be a list of 
 
 # Kernel computation in Python
 
+Threee main steps are required in Python to compute a kernel matrix. 
+
 1) Import the packages
 
 import numpy as np
@@ -20,18 +22,18 @@ import graphkernels.kernels as gk
 
 mutag_list = np.load('data.mutag')
 
-3) Compute the kernels
+3) Compute the kernels: example with the WL kernels
 
-K_edge = gk.CalculateWLKernel(mutag_list, par = 3)
+K_wl = gk.CalculateWLKernel(mutag_list, par = 3)
 
 
-The matrix K_edge is the kernel matrix, obtained with the edge histogram kernel, and therefore is a square matrix of size equal to the number of samples.
+The matrix K_wl is the kernel matrix, obtained with the WL kernel, and therefore is a square matrix of size equal to the number of samples.
 
-Note that if no par is provided, a default value is used. 
+The par here represents the number of iterations of the WL kernels. Note that if no parameters is provided, a default values is used.  
 
 # List of Graph Kernels
 
-The following graph kernels can be computed with our package. 
+Here is a complete list of all the graph kernels that can be computed with our package, the python functions to use and corresponding kernels parameters. 
 
 
 | Graph Kernel      | Function           | Par  |
