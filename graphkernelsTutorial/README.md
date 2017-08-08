@@ -1,5 +1,7 @@
 # Tutorial: how to compute graph kernels
 
+This is a tutorial for computing various kernel matrices using the *graphkernels* package. An example script is given in demo_mutag.py. 
+
 The file demo_mutag.py can be executed as 
 
 python demo_mutag.py
@@ -12,17 +14,17 @@ The data that the graph kernels functions require as input, should be a list of 
 
 Threee main steps are required in Python to compute a kernel matrix. 
 
-1) Import the packages
+1. Import the packages
 
 import numpy as np
 
 import graphkernels.kernels as gk
 
-2) Load the data
+2. Load the data
 
 mutag_list = np.load('data.mutag')
 
-3) Compute the kernels: example with the WL kernels
+3. Compute the kernels: example with the WL kernels
 
 K_wl = gk.CalculateWLKernel(mutag_list, par = 3)
 
