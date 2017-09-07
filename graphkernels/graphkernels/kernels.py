@@ -10,8 +10,9 @@ for computing the graph kernels
 
 import numpy as np
 import GKextCPy as gkCpy
+from igraph import Graph
 
-from utilities import GetGKInput
+from utilities import GetGKInput, GetAdjMatList
 
 import IPython as ip
 
@@ -166,4 +167,70 @@ def CalculateWLKernel(G, par = 5):
 	
 	return K
 
+
+def CalculateGraphletKernel(G, par = 3):
+
+	# If k<3 then assign k=3
+	if par < 3:
+
+		par = 3
+		print "Warning: k=3 is used (k = 3 or 4 is supported)"
+	
+	# If k>4 then assign k=4
+	if par > 4:
+		
+		par = 4
+		print "Warning: k=4 is used (k = 3 or 4 is supported)"
+
+	# Extract graph info
+	adj_mat, adj_list = GetAdjMatList(G)
+	par = int(par)
+
+	K = gkCpy.CalculateGraphletKernelPy(adj_mat, adj_list, par)
+
+	return K
+
+
+
+def CalculateConnectedGraphletKernel(G, par = 3):
+
+	# If k<3 then assign k=3
+	if par < 3:
+
+		par = 3
+		print "Warning: k=3 is used (k = 3 or 4 is supported)"
+	
+	# If k>4 then assign k=4
+	if par > 4:
+		
+		par = 4
+		print "Warning: k=4 is used (k = 3 or 4 is supported)"
+
+	# Extract graph info
+	adj_mat, adj_list = GetAdjMatList(G)
+
+	K = gkCpy.CalculateConnectedGraphletKernelPy(adj_mat, adj_list, par)
+
+	return K
+
+
+
+def CalculateShortestPathKernel(G):
+	
+	G_floyd = []
+	for i in xrange(len(G)):
+
+		g_floyd_am = G[i].shortest_paths_dijkstra()
+		g_floyd_am = np.asarray(g_floyd_am).reshape(len(g_floyd_am), len(g_floyd_am))
+		g = Graph.Adjacency((g_floyd_am > 0).tolist())
+		g.es['label'] = g_floyd_am[g_floyd_am.nonzero()]
+		g.vs['id']= np.arange(len(G[i].vs['label']))
+		g.vs['label'] = G[i].vs['label']
+		G_floyd.append(g)
+
+
+	G_floyd = np.array(G_floyd)
+
+  	K = CalculateKStepRandomWalkKernel(G_floyd, par = (0,1))
+ 	return K
 

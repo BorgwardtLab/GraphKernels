@@ -386,6 +386,119 @@ class IntIntVector(_object):
 IntIntVector_swigregister = _GKextCPy.IntIntVector_swigregister
 IntIntVector_swigregister(IntIntVector)
 
+class IntIntIntVector(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, IntIntIntVector, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, IntIntIntVector, name)
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        return _GKextCPy.IntIntIntVector_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        return _GKextCPy.IntIntIntVector___nonzero__(self)
+
+    def __bool__(self):
+        return _GKextCPy.IntIntIntVector___bool__(self)
+
+    def __len__(self):
+        return _GKextCPy.IntIntIntVector___len__(self)
+
+    def __getslice__(self, i, j):
+        return _GKextCPy.IntIntIntVector___getslice__(self, i, j)
+
+    def __setslice__(self, *args):
+        return _GKextCPy.IntIntIntVector___setslice__(self, *args)
+
+    def __delslice__(self, i, j):
+        return _GKextCPy.IntIntIntVector___delslice__(self, i, j)
+
+    def __delitem__(self, *args):
+        return _GKextCPy.IntIntIntVector___delitem__(self, *args)
+
+    def __getitem__(self, *args):
+        return _GKextCPy.IntIntIntVector___getitem__(self, *args)
+
+    def __setitem__(self, *args):
+        return _GKextCPy.IntIntIntVector___setitem__(self, *args)
+
+    def pop(self):
+        return _GKextCPy.IntIntIntVector_pop(self)
+
+    def append(self, x):
+        return _GKextCPy.IntIntIntVector_append(self, x)
+
+    def empty(self):
+        return _GKextCPy.IntIntIntVector_empty(self)
+
+    def size(self):
+        return _GKextCPy.IntIntIntVector_size(self)
+
+    def swap(self, v):
+        return _GKextCPy.IntIntIntVector_swap(self, v)
+
+    def begin(self):
+        return _GKextCPy.IntIntIntVector_begin(self)
+
+    def end(self):
+        return _GKextCPy.IntIntIntVector_end(self)
+
+    def rbegin(self):
+        return _GKextCPy.IntIntIntVector_rbegin(self)
+
+    def rend(self):
+        return _GKextCPy.IntIntIntVector_rend(self)
+
+    def clear(self):
+        return _GKextCPy.IntIntIntVector_clear(self)
+
+    def get_allocator(self):
+        return _GKextCPy.IntIntIntVector_get_allocator(self)
+
+    def pop_back(self):
+        return _GKextCPy.IntIntIntVector_pop_back(self)
+
+    def erase(self, *args):
+        return _GKextCPy.IntIntIntVector_erase(self, *args)
+
+    def __init__(self, *args):
+        this = _GKextCPy.new_IntIntIntVector(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def push_back(self, x):
+        return _GKextCPy.IntIntIntVector_push_back(self, x)
+
+    def front(self):
+        return _GKextCPy.IntIntIntVector_front(self)
+
+    def back(self):
+        return _GKextCPy.IntIntIntVector_back(self)
+
+    def assign(self, n, x):
+        return _GKextCPy.IntIntIntVector_assign(self, n, x)
+
+    def resize(self, *args):
+        return _GKextCPy.IntIntIntVector_resize(self, *args)
+
+    def insert(self, *args):
+        return _GKextCPy.IntIntIntVector_insert(self, *args)
+
+    def reserve(self, n):
+        return _GKextCPy.IntIntIntVector_reserve(self, n)
+
+    def capacity(self):
+        return _GKextCPy.IntIntIntVector_capacity(self)
+    __swig_destroy__ = _GKextCPy.delete_IntIntIntVector
+    __del__ = lambda self: None
+IntIntIntVector_swigregister = _GKextCPy.IntIntIntVector_swigregister
+IntIntIntVector_swigregister(IntIntIntVector)
+
 class FloatVector(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, FloatVector, name, value)
@@ -781,6 +894,54 @@ computeKernelValue = _GKextCPy.computeKernelValue
 def CalculateKernelPy(E, V_label, V_count, E_count, D_max, par, kernel_type):
     return _GKextCPy.CalculateKernelPy(E, V_label, V_count, E_count, D_max, par, kernel_type)
 CalculateKernelPy = _GKextCPy.CalculateKernelPy
+
+def find_min(a, b, c):
+    return _GKextCPy.find_min(a, b, c)
+find_min = _GKextCPy.find_min
+
+def card_ThreeInter(L1, L2, L3, card):
+    return _GKextCPy.card_ThreeInter(L1, L2, L3, card)
+card_ThreeInter = _GKextCPy.card_ThreeInter
+
+def getIndices(o_set1, o_set2, inter, diff1, diff2):
+    return _GKextCPy.getIndices(o_set1, o_set2, inter, diff1, diff2)
+getIndices = _GKextCPy.getIndices
+
+def countGraphletsFour(al, count_gr):
+    return _GKextCPy.countGraphletsFour(al, count_gr)
+countGraphletsFour = _GKextCPy.countGraphletsFour
+
+def getCardinality(o_set1, o_set2, card):
+    return _GKextCPy.getCardinality(o_set1, o_set2, card)
+getCardinality = _GKextCPy.getCardinality
+
+def countGraphletsThree(al, count_gr):
+    return _GKextCPy.countGraphletsThree(al, count_gr)
+countGraphletsThree = _GKextCPy.countGraphletsThree
+
+def getMinValue(iam, idx, sums):
+    return _GKextCPy.getMinValue(iam, idx, sums)
+getMinValue = _GKextCPy.getMinValue
+
+def countConnectedGraphletsFive(am, al, count_gr):
+    return _GKextCPy.countConnectedGraphletsFive(am, al, count_gr)
+countConnectedGraphletsFive = _GKextCPy.countConnectedGraphletsFive
+
+def countConnectedGraphletsFour(am, al, count_gr):
+    return _GKextCPy.countConnectedGraphletsFour(am, al, count_gr)
+countConnectedGraphletsFour = _GKextCPy.countConnectedGraphletsFour
+
+def countConnectedGraphletsThree(am, al, count_gr):
+    return _GKextCPy.countConnectedGraphletsThree(am, al, count_gr)
+countConnectedGraphletsThree = _GKextCPy.countConnectedGraphletsThree
+
+def CalculateGraphletKernelPy(graph_adj_all, graph_adjlist_all, k):
+    return _GKextCPy.CalculateGraphletKernelPy(graph_adj_all, graph_adjlist_all, k)
+CalculateGraphletKernelPy = _GKextCPy.CalculateGraphletKernelPy
+
+def CalculateConnectedGraphletKernelPy(graph_adj_all, graph_adjlist_all, k):
+    return _GKextCPy.CalculateConnectedGraphletKernelPy(graph_adj_all, graph_adjlist_all, k)
+CalculateConnectedGraphletKernelPy = _GKextCPy.CalculateConnectedGraphletKernelPy
 # This file is compatible with both classic and new-style classes.
 
 

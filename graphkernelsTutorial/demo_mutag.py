@@ -10,8 +10,8 @@ import IPython as ip
 import numpy as np
 
 # Load data
-mutag_list = np.load("graphkernels/data.mutag")
-
+#mutag_list = np.load("graphkernels/data.mutag")
+mutag_list = np.load("data.mutag")
 ### ALL KERNELS COMPUTE
 
 K1 = gk.CalculateEdgeHistKernel(mutag_list)
@@ -22,8 +22,10 @@ K5 = gk.CalculateEdgeHistGaussKernel(mutag_list)
 K6 = gk.CalculateVertexHistGaussKernel(mutag_list)
 K7 = gk.CalculateVertexEdgeHistGaussKernel(mutag_list)
 K8 = gk.CalculateGeometricRandomWalkKernel(mutag_list)
-K8 = gk.CalculateGeometricRandomWalkKernel(mutag_list)
 K9 = gk.CalculateExponentialRandomWalkKernel(mutag_list)
 K10 = gk.CalculateKStepRandomWalkKernel(mutag_list)
+K11 = gk.CalculateWLKernel(mutag_list)
+K12 = gk.CalculateConnectedGraphletKernel(mutag_list, 4)
+K13 = gk.CalculateGraphletKernel(mutag_list, 4)
+K14 = gk.CalculateShortestPathKernel(mutag_list)
 
-ip.embed()

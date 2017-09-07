@@ -67,7 +67,6 @@ def GetGKInput(G):
 	E_count = gkCpy.IntVector()
 	D_max = gkCpy.IntVector()
 
-
 	for i in xrange(len(G)):
 
 		g_info = GetGraphInfo(G[i])
@@ -77,8 +76,35 @@ def GetGKInput(G):
 		E_count.append(g_info['esize'])
 		D_max.append(g_info['maxdegree'])
 
-
 	return E, V_label, V_count, E_count, D_max
+
+
+
+def GetAdjMatList(G):
+
+	adj_mat = gkCpy.VecMatrixXi()
+	adj_list = gkCpy.IntIntIntVector()
+
+	for i in xrange(len(G)):
+
+		# get adjacency matrix of graph i
+		am_cur = G[i].get_adjacency()
+		am_cur = np.array(am_cur.data)
+		adj_mat.append(am_cur)
+
+		# get adjacency list of graph i
+		al_cur = np.asarray(G[i].get_adjlist())
+		
+		for j in xrange(len(al_cur)):
+			al_cur[j] = gkCpy.IntVector(al_cur[j])
+
+		adj_list.append(gkCpy.IntIntVector(al_cur))
+
+	return adj_mat, adj_list
+
+
+
+
 
 
 

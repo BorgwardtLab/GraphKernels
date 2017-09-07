@@ -76,5 +76,29 @@ double computeKernelValue(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, vec
 
 MatrixXd CalculateKernelPy(vector<MatrixXi>& E, vector<vector<int> >& V_label, vector<int>& V_count, vector<int>& E_count, vector<int>& D_max, vector<double>& par, int kernel_type);
 
+// added for graphlets
+int find_min(int a, int b, int c);
+
+void card_ThreeInter(vector<int>& L1, vector<int>& L2, vector<int>& L3, vector<int>& card);
+void getIndices(vector<int>& o_set1, vector<int>& o_set2, vector<int>& inter, vector<int>& diff1, vector<int>& diff2);
+
+
+VectorXd countGraphletsFour(vector<vector<int>>& al, VectorXd& count_gr);
+void getCardinality(vector<int>& o_set1, vector<int>& o_set2, vector<double>& card);
+VectorXd countGraphletsThree(vector<vector<int>>& al, VectorXd& count_gr);
+void getMinValue(MatrixXi& iam, vector<int>& idx, vector<int>& sums);
+
+VectorXd countConnectedGraphletsFive(MatrixXi& am, vector<vector<int>>& al, VectorXd& count_gr);
+
+VectorXd countConnectedGraphletsFour(MatrixXi& am, vector<vector<int>>& al, VectorXd& count_gr);
+VectorXd countConnectedGraphletsThree(MatrixXi& am, vector<vector<int>>& al, VectorXd& count_gr);
+
+
+MatrixXd CalculateGraphletKernelPy(vector<MatrixXi>& graph_adj_all, vector<vector<vector<int>>>& graph_adjlist_all, int k);
+MatrixXd CalculateConnectedGraphletKernelPy(vector<MatrixXi>& graph_adj_all, vector<vector<vector<int>>>& graph_adjlist_all, int k);
+
+
+
+
 
 
