@@ -10,10 +10,13 @@ import IPython as ip
 import numpy as np
 
 # Load data
-#mutag_list = np.load("graphkernels/data.mutag")
-mutag_list = np.load("data.mutag")
-### ALL KERNELS COMPUTE
+# comment next line if data.mutag is in a different folder
+mutag_list = np.load("graphkernels/data.mutag")
 
+# Uncomment next line if data.mutag is in your current folder
+#mutag_list = np.load("data.mutag")
+
+### ALL KERNELS COMPUTE
 K1 = gk.CalculateEdgeHistKernel(mutag_list)
 K2 = gk.CalculateVertexHistKernel(mutag_list) 
 K3 = gk.CalculateVertexEdgeHistKernel(mutag_list)

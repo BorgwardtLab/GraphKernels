@@ -168,7 +168,7 @@ def CalculateWLKernel(G, par = 5):
 	return K
 
 
-def CalculateGraphletKernel(G, par = 3):
+def CalculateGraphletKernel(G, par = 4):
 
 	# If k<3 then assign k=3
 	if par < 3:
@@ -192,19 +192,19 @@ def CalculateGraphletKernel(G, par = 3):
 
 
 
-def CalculateConnectedGraphletKernel(G, par = 3):
+def CalculateConnectedGraphletKernel(G, par = 4):
 
 	# If k<3 then assign k=3
 	if par < 3:
 
 		par = 3
-		print "Warning: k=3 is used (k = 3 or 4 is supported)"
+		print "Warning: k=3 is used (k = 3, 4 or 5 is supported)"
 	
-	# If k>4 then assign k=4
-	if par > 4:
+	# If k>5 then assign k=5
+	if par > 5:
 		
-		par = 4
-		print "Warning: k=4 is used (k = 3 or 4 is supported)"
+		par = 5
+		print "Warning: k=5 is used (k = 3, 4 or 5 is supported)"
 
 	# Extract graph info
 	adj_mat, adj_list = GetAdjMatList(G)
