@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: graphkernels
+Version: 0.1.4
+Summary: Package for computing graph kernels
+Home-page: https://github.com/eghisu/GraphKernels/tree/master/graphkernels
+Author: Elisabetta Ghisu
+Author-email: elisabetta.ghisu@bsse.ethz.ch
+License: ETH Zurich
+Description-Content-Type: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN

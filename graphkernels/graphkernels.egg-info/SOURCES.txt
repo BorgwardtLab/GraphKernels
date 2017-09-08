@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.py
+graphkernels/__init__.py
+graphkernels/data.mutag
+graphkernels/kernels.py
+graphkernels/utilities.py
+graphkernels.egg-info/PKG-INFO
+graphkernels.egg-info/SOURCES.txt
+graphkernels.egg-info/dependency_links.txt
+graphkernels.egg-info/requires.txt
+graphkernels.egg-info/top_level.txt

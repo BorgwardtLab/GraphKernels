@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: GKextCPy
+Version: 0.2.9
+Summary: Graph Kernels: building the extension Python module. This is a wrapper package from C++ to Python.
+Home-page: UNKNOWN
+Author: Elisabetta Ghisu
+Author-email: UNKNOWN
+License: ETH Zurich
+Description-Content-Type: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
