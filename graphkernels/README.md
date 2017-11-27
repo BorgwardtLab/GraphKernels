@@ -10,8 +10,7 @@ The Python and R packages are described at:
 
 - M. Sugiyama, M.E. Ghisu, F. Llinares-López and K. Borgwardt. graphkernels: R and Python packages for graph comparison. Bioinformatics, 2017. 
 
-The paper can be found here: 
-https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btx602/4209994 
+The paper can be found at: https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btx602/4209994 
 
 # Installation
 
