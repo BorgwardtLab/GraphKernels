@@ -35,4 +35,4 @@ Note that graphkernels is a Python library relying on C++ source code. The wrapp
 
 # Usage
 
-Please have a look at https://github.com/eghisu/GraphKernels/tree/master/graphkernelsTutorial for a short tutorial on the basic usage of our package. Here, we provide an example script for computing graph kernels through our package on a benchmark dataset. 
+We provide a short [tutorial](https://github.com/eghisu/GraphKernels/tree/master/graphkernelsTutorial) for the basic usage of our package; there, you can also find an example script for computing graph kernels through our package on a benchmark dataset. 
