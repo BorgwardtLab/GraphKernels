@@ -1,2 +1,2 @@
-from graphkernels import *
-from utilities import *
+from .kernels import *
+from .utilities import *
