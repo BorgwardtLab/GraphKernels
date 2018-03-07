@@ -142,7 +142,7 @@ def CalculateKStepRandomWalkKernel(G, par=1):
     # Extract graph info
     E, V_label, V_count, E_count, D_max = GetGKInput(G)
     
-    if isinstance(par, (int, long, float, complex)):
+    if isinstance(par, (int, float, complex)):
         par = gkCpy.DoubleVector([par])
 
     else:
