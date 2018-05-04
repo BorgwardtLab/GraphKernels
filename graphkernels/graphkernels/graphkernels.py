@@ -8,8 +8,9 @@
 Collect all the functions
 for computing the graph kernels
 """
+from __future__ import absolute_import
 import numpy as np, GKextCPy as gkCpy
-from utilities import GetGKInput
+from graphkernels.utilities import GetGKInput
 
 def CalculateEdgeHistKernel(G, par=-1.0):
     E, V_label, V_count, E_count, D_max = GetGKInput(G)
