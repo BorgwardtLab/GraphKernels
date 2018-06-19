@@ -21,9 +21,11 @@ Threee main steps are required in Python to compute a kernel matrix.
 
 1. Import the packages
 
+```python
     import numpy as np
 
     import graphkernels.kernels as gk
+```
 
 2. Load the data
 
