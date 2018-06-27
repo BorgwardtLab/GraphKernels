@@ -335,6 +335,9 @@ MatrixXd WLKernelMatrix(vector<MatrixXi>& E, vector<vector<int> >& V_label, vect
   vector<int> index_org(v_all);
   vector<int> graph_index(v_all);
 
+  //NEWadd
+  label_list.setZero();
+  
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < num_v[i]; j++) {
       label_list(j + raise, 0) = V_label[i][j];
@@ -359,13 +362,13 @@ MatrixXd WLKernelMatrix(vector<MatrixXi>& E, vector<vector<int> >& V_label, vect
     count_index.insert(graph_index[index_org[index[i]]]);
     count[graph_index[index_org[index[i]]]]++;
     if (i == v_all - 1 || label_list(index[i], 0) != label_list(index[i + 1], 0)) {
-      for (set<Int>::iterator itr = count_index.begin(), end = count_index.end(); itr != end; ++itr) {
-	for (set<int>::iterator itr2 = itr, end2 = count_index.end(); itr2 != end2; ++itr2) {
-	  k_value = count[*itr] * count[*itr2];
-	  K_mat(*itr, *itr2) += k_value;
-	  K_mat(*itr2, *itr) += k_value;
-	}
-	count[*itr] = 0;
+      for (set<int>::iterator itr = count_index.begin(), end = count_index.end(); itr != end; ++itr) {
+  for (set<int>::iterator itr2 = itr, end2 = count_index.end(); itr2 != end2; ++itr2) {
+    k_value = count[*itr] * count[*itr2];
+    K_mat(*itr, *itr2) += k_value;
+    K_mat(*itr2, *itr) += k_value;
+  }
+  count[*itr] = 0;
       }
       count_index.clear();
     }
@@ -377,20 +380,33 @@ MatrixXd WLKernelMatrix(vector<MatrixXi>& E, vector<vector<int> >& V_label, vect
 
     // first put vertex label
     nei_list.col(0) = label_list.col(h);
-    // second put neibor labels
+    // second put neighbor labels
     raise = 0;
     for (int i = 0; i < n; i++) {
       fill(counter.begin(), counter.end(), 1);
       for (int j = 0; j < num_e[i]; j++) {
-	v_raised_1 = E[i](j, 0) + raise;
-	v_raised_2 = E[i](j, 1) + raise;
-	nei_list(v_raised_1, counter[E[i](j, 0)]) = label_list(v_raised_2, h);
-	nei_list(v_raised_2, counter[E[i](j, 1)]) = label_list(v_raised_1, h);
-	counter[E[i](j, 0)]++;
-	counter[E[i](j, 1)]++;
+  v_raised_1 = E[i](j, 0) + raise;
+  v_raised_2 = E[i](j, 1) + raise;
+  nei_list(v_raised_1, counter[E[i](j, 0)]) = label_list(v_raised_2, h);
+  nei_list(v_raised_2, counter[E[i](j, 1)]) = label_list(v_raised_1, h);
+  counter[E[i](j, 0)]++;
+  counter[E[i](j, 1)]++;
       }
       raise += num_v[i];
     }
+
+    // sort each row w.r.t. neighbors
+    vector<int> y(nei_list.cols() - 1);
+    for (int i = 0; i < v_all; i++) {
+      for (int j = 1; j < nei_list.cols(); ++j) {
+  y[j - 1] = nei_list(i, j);
+      }
+      sort(y.begin(), y.end(), greater<int>());
+      for (int j = 1; j < nei_list.cols(); ++j) {
+  nei_list(i, j) = y[j - 1];
+      }
+    }
+
 
     // radix sort
     for (int i = 0; i < v_all; i++) {
@@ -399,7 +415,7 @@ MatrixXd WLKernelMatrix(vector<MatrixXi>& E, vector<vector<int> >& V_label, vect
     }
     for (int k = nei_list.cols() - 1; k >= 0; k--) {
       for (int i = 0; i < v_all; i++) {
-	x[i] = nei_list(i, k);
+  x[i] = nei_list(i, k);
       }
       bucketsort(x, index, label_max);
     }
@@ -411,17 +427,17 @@ MatrixXd WLKernelMatrix(vector<MatrixXi>& E, vector<vector<int> >& V_label, vect
       count_index.insert(graph_index[index_org[index[i]]]);
       count[graph_index[index_org[index[i]]]]++;
       if (i == v_all - 1 ||
-	  (nei_list.row(index[i]) - nei_list.row(index[i + 1])).sum() != 0) {
-	for (set<int>::iterator itr = count_index.begin(), end = count_index.end(); itr != end; ++itr) {
-	  for (set<int>::iterator itr2 = itr, end2 = count_index.end(); itr2 != end2; ++itr2) {
-	    k_value = count[*itr] * count[*itr2];
-	    K_mat(*itr, *itr2) += k_value;
-	    K_mat(*itr2, *itr) += k_value;
-	  }
-	  count[*itr] = 0;
-	}
-	count_index.clear();	
-	label_max++;
+    (nei_list.row(index[i]) - nei_list.row(index[i + 1])).array().abs().sum() != 0) {
+  for (set<int>::iterator itr = count_index.begin(), end = count_index.end(); itr != end; ++itr) {
+    for (set<int>::iterator itr2 = itr, end2 = count_index.end(); itr2 != end2; ++itr2) {
+      k_value = count[*itr] * count[*itr2];
+      K_mat(*itr, *itr2) += k_value;
+      K_mat(*itr2, *itr) += k_value;
+    }
+    count[*itr] = 0;
+  }
+  count_index.clear();  
+  label_max++;
       }
     }
   }
