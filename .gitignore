@@ -5,3 +5,6 @@
 *.o
 *.pyc
 *.so
+
+*.egg-info
+dist
