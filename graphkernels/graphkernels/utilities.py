@@ -37,12 +37,19 @@ def GetGraphInfo(g):
     E = np.hstack((E,e_attr_values))
 
     #if len(g.vs.attributes()) > 1:
-    #   print("There are multiple vertex attributes! The first attribute %s is used" % g.vs.attributes()[0])
+    #   print("There are multiple vertex attributes! The first attribute %s (or the label) is used" % g.vs.attributes()[0])
 
     if len(g.vs.attributes()) == 0:
         g.vs["label"] = 1
 
-    v_attr_name = g.vs.attributes()[1]
+    # Default to using a 'label' attribute of the graph if it is
+    # present. This also accounts for the case where there are 2
+    # or more attributes.
+    if 'label' in g.vs.attributes():
+        v_attr_name = 'label'
+    else:
+        v_attr_name = gs.vs.attributes()[0]
+
     v_attr_values = np.asarray(g.vs[v_attr_name]).reshape(len(g.vs),1).astype(int)
 
     res = dict([('edge', E), ('vlabel', v_attr_values), ('vsize', len(g.vs)), ('esize', len(g.es)), ('maxdegree', g.maxdegree())])
