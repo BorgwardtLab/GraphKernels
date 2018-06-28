@@ -1,10 +1,8 @@
-
-
 # graphkernels 
 
-graphkernels is a Python package for computing various graph kernels. 
+`graphkernels` is a Python package for computing various graph kernels. 
 
-For the C++ implementation and R package see: https://github.com/mahito-sugiyama/graph-kernels.
+For the C++ implementation and R package, please refer to https://github.com/mahito-sugiyama/graph-kernels.
 
 The Python and R packages are described at:
 
@@ -16,12 +14,13 @@ The paper can be found [here](https://academic.oup.com/bioinformatics/advance-ar
 
 The users can installl the pakage via pip, by typing in a terminal
 
-pip install graphkernels 
+    $ pip install graphkernels 
 
-Alternatively, the package can be build from source. After downloading the source code from guthub or pypi (https://pypi.python.org/pypi/graphkernels/0.1.2), users can use the setup.py script to install the package, by typing
+Alternatively, the package can be build from source. After downloading the source code from GitHub or [pypi](https://pypi.python.org/pypi/graphkernels/0.1.2), users can use
+the `setup.py` script to install the package, by typing:
 
-python setup.py build
-python setup.py install 
+    $ python setup.py build
+    $ python setup.py install
 
 # Requirements
 

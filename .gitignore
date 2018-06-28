@@ -1,0 +1,10 @@
+.DS_Store
+._.DS_Store
+._*
+
+*.o
+*.pyc
+*.so
+
+*.egg-info
+dist
