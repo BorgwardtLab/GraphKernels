@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
+from sklearn.base import clone
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import KFold
+from sklearn.model_selection import ParameterGrid
 from sklearn.model_selection import StratifiedKFold
 from sklearn.svm import SVC
 
@@ -22,7 +24,7 @@ class KernelGridSearchCV:
     The class only supports scoring based on accuracy so far.
     """
 
-    def __init__(self, clf, param_grid, n_folds, cv = None, random_state = None, refit = True):
+    def __init__(self, clf, param_grid, cv = None, random_state = None, refit = True):
         self.clf_             = clf
         self.grid_            = param_grid
         self.cv_              = cv
@@ -107,15 +109,35 @@ if __name__ == '__main__':
 
     for kernel_name, kernel_matrix in sorted(kernel_matrices.items()):
 
-        # Normalize the kernel matrix by dividing every element by the
-        # square root of their corresponding diagonal elements. Such a
-        # normalization makes it easier to train an SVM later.
-        n = kernel_matrix.shape[0]
-        for i in range(n):
-            for j in range(n):
-                kernel_matrix[i,j] = kernel_matrix[i,j] / (np.sqrt(kernel_matrix[i,i]) * np.sqrt(kernel_matrix[j,j]))
+        # Prepare a parameter grid to train an SVM classifier with
+        # cross-validation.
+        grid = {
+                'C': 10. ** np.arange(-2,3)
+        }
 
-        svm = SVC(C=1, kernel='precomputed')
-        svm.fit(kernel_matrix, y)
-        y_pred = svm.predict(kernel_matrix)
-        print(accuracy_score(y, y_pred))
+        # Calling the classifier like this ensures that we can use
+        # our kernel matrices from above.
+        clf = SVC(kernel='precomputed')
+
+        grid_search = KernelGridSearchCV(
+            clf,
+            param_grid = grid,
+            cv = 10, # 10-fold cross-validation; the interface also
+                     # supports your own cross-validator script for
+                     # more specific cases
+
+            # Make this tutorial reproducible
+            random_state = 42,
+        )
+
+        # This runs the parameter search over the specified grid
+        # according to the cross-validation that was selected in
+        # the above code.
+        grid_search.fit(kernel_matrix,y)
+
+        # The grid search stores the best estimator, i.e. the one that
+        # yielded the best accuracy. You can use it for subsequent ops
+        # as well.
+        clf = grid_search.best_estimator_
+
+        print('10-fold cross-validation for {} yields an accuracy of {:2.2f}'.format(kernel_name, grid_search.best_score_ * 100.0))
