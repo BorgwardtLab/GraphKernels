@@ -35,6 +35,6 @@ setup(name = 'GKextCPy',
     ext_modules = [GKextCPy_module],
     py_modules = ['GKextCPy'],
     setup_requires = ['pkgconfig', 'numpy'],
-    install_requires = ['numpy'],
+    install_requires = ['pkgconfig', 'numpy'],
     license = 'ETH Zurich',
 )
