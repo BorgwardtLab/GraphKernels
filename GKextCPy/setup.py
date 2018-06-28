@@ -12,10 +12,7 @@ import sys
 # Solve the chicken-and-egg problem of requiring packages *before* the
 # script has been parsed.
 for package in ['numpy', 'pkgconfig']:
-    if '--user' in sys.argv:
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--user', package])
-    else:
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', package])
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--user', package])
 
 def get_include_dirs():
     import pkgconfig
