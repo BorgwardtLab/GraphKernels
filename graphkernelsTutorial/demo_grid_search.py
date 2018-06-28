@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import KFold
 from sklearn.model_selection import StratifiedKFold
 from sklearn.svm import SVC
@@ -103,3 +104,18 @@ if __name__ == '__main__':
         # kernel. Here, we just use default values, and search for the
         # best parameters in an SVM.
         kernel_matrices[kernel_name] = kernel_function(X)
+
+    for kernel_name, kernel_matrix in sorted(kernel_matrices.items()):
+
+        # Normalize the kernel matrix by dividing every element by the
+        # square root of their corresponding diagonal elements. Such a
+        # normalization makes it easier to train an SVM later.
+        n = kernel_matrix.shape[0]
+        for i in range(n):
+            for j in range(n):
+                kernel_matrix[i,j] = kernel_matrix[i,j] / (np.sqrt(kernel_matrix[i,i]) * np.sqrt(kernel_matrix[j,j]))
+
+        svm = SVC(C=1, kernel='precomputed')
+        svm.fit(kernel_matrix, y)
+        y_pred = svm.predict(kernel_matrix)
+        print(accuracy_score(y, y_pred))
