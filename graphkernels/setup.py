@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name = 'graphkernels',
-      version = '0.1.8',
+      version = '0.1.9',
 	description = 'Package for computing graph kernels',
 	url = 'https://github.com/eghisu/GraphKernels/tree/master/graphkernels',
 	author = 'Elisabetta Ghisu',
