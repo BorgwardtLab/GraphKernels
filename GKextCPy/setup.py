@@ -29,7 +29,7 @@ GKextCPy_module = Extension('_GKextCPy',
 )
 
 setup(name = 'GKextCPy',
-    version = '0.3.7',
+    version = '0.3.8',
     author = 'Elisabetta Ghisu',
     description = """Graph Kernels: building the extension Python module. This is a wrapper package from C++ to Python.""",
     ext_modules = [GKextCPy_module],
