@@ -312,10 +312,11 @@ double kstepRandomWalkKernel(MatrixXi& e1, MatrixXi& e2, vector<int>& v1_label, 
 
 // Weisfeiler-Leiman graph kernel
 MatrixXd WLKernelMatrix(vector<MatrixXi>& E, vector<vector<int> >& V_label, vector<int>& num_v, vector<int>& num_e, vector<int>& degree_max, int h_max) {
-  // K_mat.setZero();
+  
 
   MatrixXd K_mat(V_label.size(), V_label.size());
 
+  K_mat.setZero();
 
   int n = (int)E.size();
   int v_all = accumulate(num_v.begin(), num_v.end(), 0);
