@@ -2,6 +2,14 @@
 
 from sklearn.model_selection import KFold
 from sklearn.model_selection import StratifiedKFold
+from sklearn.svm import SVC
+
+import graphkernels.kernels as gk
+import igraph as ig
+import numpy as np
+
+import os
+import sys
 
 class KernelGridSearchCV:
     """
@@ -27,7 +35,7 @@ class KernelGridSearchCV:
         # Use stratified k-folds with a user-specified number
         if self.cv_ is None:
             cv = KFold(
-                    n _splits = 3,
+                    n_splits = 3,
                     shuffle = True,
                     random_state = self.random_state_
             )
@@ -63,3 +71,35 @@ class KernelGridSearchCV:
                 self.best_estimator_ = clone(clf)
                 self.best_score_     = score
                 self.best_params_    = parameters
+
+if __name__ == '__main__':
+    data_directory = 'mutag'
+    X = []
+    y = np.genfromtxt('mutag.label')
+    with open('mutag.list') as f:
+        for line in f:
+            filename = line.strip()
+            full_path = os.path.join(data_directory, filename)
+            X.append(ig.Graph.Read_GraphML(full_path))
+
+    # Calculate kernel matrix for a few kernels. We are only using a few
+    # kernels with a good runtime performance. Please refer to the other
+    # tutorials and documentation for a list of *all* available kernels.
+
+    kernels = {
+        'vertex_histogram': gk.CalculateVertexHistKernel,
+        'edge_histogram': gk.CalculateEdgeHistKernel,
+        'weisfeiler_lehman': gk.CalculateWLKernel
+    }
+
+    kernel_matrices = dict()
+    for kernel_name, kernel_function in sorted(kernels.items()):
+        print('Calculating full kernel matrix for', kernel_name)
+
+        # This delegates the kernel calculation to the kernel function
+        # specified above. In a real-world scenario, you should supply
+        # more parameters to each kernel, such as `sigma` for Gaussian
+        # kernels (histograms), or the number of iterations for the WL
+        # kernel. Here, we just use default values, and search for the
+        # best parameters in an SVM.
+        kernel_matrices[kernel_name] = kernel_function(X)
