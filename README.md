@@ -2,7 +2,7 @@
 
 A large collection of source code for computing kernels on graph. The src folder contains the following elements:
 
-- graphkernels is a Python package for graph kernels. The Python interface is created from a C++ source code that is wrapped with SWIG
+- graphkernels is a Python package for graph kernels. The Python interface is created from a C++ source code that is wrapped with SWIG (http://www.swig.org)
 - GKextCPy is the package created to build the extension module for the wrapper from C++ to Python
 
 # graphkernels 
@@ -34,7 +34,6 @@ the `setup.py` script to install the package, by typing:
 Note that graphkernels is a Python library relying on C++ source code. The wrapper is built upon an extension  which need to be installed in order for the package to work. The installation described above will automatically install all the requirements for you and place them in the correct path. If you experience problems with the installation above, please note that the following tools are necessary for the package to run. 
 
 - a C++ compiler (e.g. gcc, http://gcc.gnu.org/install/, XCode)
-- SWIG (http://www.swig.org)
 - eigen3 (http://eigen.tuxfamily.org/index.php?title=Main_Page#Download)
 - pkg-config (https://www.freedesktop.org/wiki/Software/pkg-config/)
 
