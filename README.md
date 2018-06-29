@@ -40,7 +40,7 @@ Note that graphkernels is a Python library relying on C++ source code. The wrapp
 
 Please, note that the dependencies above need to be pre-installed in your machine. The links above provide information and instructions for the installation. The above tools can also be easily installed via homebrew, for instance:
 
-`brew install eigen3`
+`brew install eigen`
 
 Python dependenies - automatically handled:
 - GKextCPy
