@@ -53,6 +53,7 @@ We provide a short [tutorial](https://github.com/eghisu/GraphKernels/tree/master
 
 If you Use the `graphkernels` package in your projects please cite our work
 
+```
 @article{Sugiyama-2017-Bioinformatics,
 author = {Sugiyama, Mahito and Ghisu, M. Elisabetta and Llinares-López, Felipe and Borgwardt, Karsten},
 title = {graphkernels: R and Python packages for graph comparison},
@@ -64,4 +65,4 @@ year = {2017},
 doi = {10.1093/bioinformatics/btx602},
 URL = {http://dx.doi.org/10.1093/bioinformatics/btx602},
 }
-
+```
