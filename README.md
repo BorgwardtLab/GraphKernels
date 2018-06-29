@@ -51,7 +51,7 @@ We provide a short [tutorial](https://github.com/eghisu/GraphKernels/tree/master
 
 # Citation
 
-If you Use the `graphkernels` package in your projects please cite our work
+If you use the `graphkernels` package in your projects please cite our work
 
 ```
 @article{Sugiyama-2017-Bioinformatics,
