@@ -12,7 +12,12 @@ import sys
 # Solve the chicken-and-egg problem of requiring packages *before* the
 # script has been parsed.
 for package in ['numpy', 'pkgconfig']:
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--user', package])
+    # Inside a `virtualenv`, we are *not* allowed to install packages as
+    # a regular user.
+    if hasattr(sys, 'real_prefix'):
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', package])
+    else:
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--user', package])
 
 def get_include_dirs():
     import pkgconfig
