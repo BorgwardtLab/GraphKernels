@@ -23,7 +23,7 @@ The users can installl the pakage via pip, by typing in a terminal
 
     $ pip install graphkernels 
 
-Alternatively, the package can be build from source. After downloading the source code from GitHub or [pypi](https://pypi.python.org/pypi/graphkernels/0.1.2), users can use
+Alternatively, the package can be build from source. After downloading the source code from GitHub, users can use
 the `setup.py` script to install the package, by typing:
 
     $ python setup.py build
@@ -33,12 +33,35 @@ the `setup.py` script to install the package, by typing:
 
 Note that graphkernels is a Python library relying on C++ source code. The wrapper is built upon an extension  which need to be installed in order for the package to work. The installation described above will automatically install all the requirements for you and place them in the correct path. If you experience problems with the installation above, please note that the following tools are necessary for the package to run. 
 
-- SWIG
+- a C++ compiler (e.g. gcc, http://gcc.gnu.org/install/, XCode)
+- SWIG (http://www.swig.org)
+- eigen3 (http://eigen.tuxfamily.org/index.php?title=Main_Page#Download)
+
+Please, note that the dependencies above need to be pre-installed in your machine. The links above provide information and instructions for the installation.  
+
+Python dependenies - automatically handled:
 - GKextCPy
-- a C++ compiler (e.g. gcc, XCode)
 - igraph
 - numpy
 
+
 # Usage
 
-We provide a short [tutorial](https://github.com/eghisu/GraphKernels/tree/master/graphkernelsTutorial) for the basic usage of our package; there, you can also find an example script for computing graph kernels through our package on a benchmark dataset. 
+We provide a short [tutorial](https://github.com/eghisu/GraphKernels/tree/master/Tutorial) for the basic usage of our package; there, you can also find an example script for computing graph kernels through our package on a benchmark dataset. 
+
+# Citation
+
+If you Use the 'graphkernels' package in your projects please cite our work
+
+@article{Sugiyama-2017-Bioinformatics,
+author = {Sugiyama, Mahito and Ghisu, M. Elisabetta and Llinares-López, Felipe and Borgwardt, Karsten},
+title = {graphkernels: R and Python packages for graph comparison},
+journal = {Bioinformatics},
+volume = {34},
+number = {3},
+pages = {530--532},
+year = {2017},
+doi = {10.1093/bioinformatics/btx602},
+URL = {http://dx.doi.org/10.1093/bioinformatics/btx602},
+}
+
