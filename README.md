@@ -36,8 +36,11 @@ Note that graphkernels is a Python library relying on C++ source code. The wrapp
 - a C++ compiler (e.g. gcc, http://gcc.gnu.org/install/, XCode)
 - SWIG (http://www.swig.org)
 - eigen3 (http://eigen.tuxfamily.org/index.php?title=Main_Page#Download)
+- pkg-config (https://www.freedesktop.org/wiki/Software/pkg-config/)
 
-Please, note that the dependencies above need to be pre-installed in your machine. The links above provide information and instructions for the installation.  
+Please, note that the dependencies above need to be pre-installed in your machine. The links above provide information and instructions for the installation. The above tools can also be easily installed via homebrew, for instance:
+
+`brew install eigen3`
 
 Python dependenies - automatically handled:
 - GKextCPy
