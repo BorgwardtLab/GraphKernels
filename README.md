@@ -23,25 +23,51 @@ The users can installl the pakage via pip, by typing in a terminal
 
     $ pip install graphkernels 
 
-Alternatively, the package can be build from source. After downloading the source code from GitHub, users can use
-the `setup.py` script to install the package, by typing:
+Alternatively, the package can be build from source. After downloading the source code from GitHub
 
+    $ git clone https://github.com/BorgwardtLab/GraphKernels.git
+
+users can use the `setup.py` script to install the package
+
+    $ cd GraphKernels/src/graphkernels
     $ python setup.py build
-    $ python setup.py install
+    $ python setup.py install --user
 
-# Requirements
 
-Note that graphkernels is a Python library relying on C++ source code. The wrapper is built upon an extension  which need to be installed in order for the package to work. The installation described above will automatically install all the requirements for you and place them in the correct path. If you experience problems with the installation above, please note that the following tools are necessary for the package to run. 
+In case of error in any of the above steps, please make sure that all requirements are satisfied. The install requirements section below provide instruction to install all the dependencies, in case you don't have them in your environment.
+
+# Installing the requirements
+
+Note that graphkernels is a Python library relying on C++ source code. The wrapper is built upon an extension  which need to be installed in order for the package to work. If you experience problems with the installation above, you might be missing one or more of the dependencies tools, which need to be pre-installed in your environment.  
 
 - a C++ compiler (e.g. gcc, http://gcc.gnu.org/install/, XCode)
 - eigen3 (http://eigen.tuxfamily.org/index.php?title=Main_Page#Download)
 - pkg-config (https://www.freedesktop.org/wiki/Software/pkg-config/)
 
-Please, note that the dependencies above need to be pre-installed in your machine. The links above provide information and instructions for the installation. The above tools can also be easily installed via homebrew, for instance:
+We recommend the following steps for installing the dependencies
 
-`brew install eigen`
+1) Install eigen3
+    
+    On Ubuntu:
+    
+    `sudo apt install libeigen3-dev`
+    
+    On MacOSX: 
+    
+    `brew install eigen`
+    
+2) Install pkg-config
 
-Python dependenies - automatically handled:
+    On Ubuntu:
+    
+    `sudo apt install pkg-config`
+    
+    On MacOSX
+    
+    `brew install pkg-config`
+  
+Additional Python dependencies are automatically handled when installing the `graphkernels` package: 
+
 - GKextCPy
 - igraph
 - numpy
