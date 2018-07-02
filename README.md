@@ -54,7 +54,7 @@ We recommend the following steps for installing the dependencies
     
     On Ubuntu:
     
-    `$ sudo apt install libeigen3-dev`
+    `$ sudo apt-get install libeigen3-dev`
     
     On MacOSX: 
     
@@ -64,7 +64,7 @@ We recommend the following steps for installing the dependencies
 
     On Ubuntu:
     
-    `$ sudo apt install pkg-config`
+    `$ sudo apt-get install pkg-config`
     
     On MacOSX
     
