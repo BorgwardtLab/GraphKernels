@@ -36,7 +36,7 @@ users can use the `setup.py` script to install the package
 
 In case of error in any of the above steps, please make sure that all requirements are satisfied. The install requirements section below provide instruction to install all the dependencies, in case you don't have them in your environment.
 
-You should also make sure that you're installing the latest release of our package, in case you've had a previous version installed. To make sure the extension ad package are not taken from your cache, you can use the `--no-cache-dir` option and install the package as:
+You should also make sure that you're installing the latest release of our package, in case you've had a previous version installed. To make sure the extension and package are not taken from your cache, you can use the `--no-cache-dir` option and install the package as:
 
 `pip --no-cache-dir install graphkernels`
 
