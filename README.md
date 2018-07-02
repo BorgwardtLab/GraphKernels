@@ -36,6 +36,10 @@ users can use the `setup.py` script to install the package
 
 In case of error in any of the above steps, please make sure that all requirements are satisfied. The install requirements section below provide instruction to install all the dependencies, in case you don't have them in your environment.
 
+You should also make sure that you're installing the latest release of our package, in case you've had a previous version installed. To make sure the extension ad package are not taken from your cache, you can use the `--no-cache-dir` option and install the package as:
+
+`pip --no-cache-dir install graphkernels`
+
 # Installing the requirements
 
 Note that graphkernels is a Python library relying on C++ source code. The wrapper is built upon an extension  which need to be installed in order for the package to work (automatically handled). If you experience problems with the installation above, you might be missing one or more of the dependencies tools, which need to be pre-installed in your environment.  
