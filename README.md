@@ -38,7 +38,7 @@ In case of error in any of the above steps, please make sure that all requiremen
 
 # Installing the requirements
 
-Note that graphkernels is a Python library relying on C++ source code. The wrapper is built upon an extension  which need to be installed in order for the package to work. If you experience problems with the installation above, you might be missing one or more of the dependencies tools, which need to be pre-installed in your environment.  
+Note that graphkernels is a Python library relying on C++ source code. The wrapper is built upon an extension  which need to be installed in order for the package to work (automatically handled). If you experience problems with the installation above, you might be missing one or more of the dependencies tools, which need to be pre-installed in your environment.  
 
 - a C++ compiler (e.g. gcc, http://gcc.gnu.org/install/, XCode)
 - eigen3 (http://eigen.tuxfamily.org/index.php?title=Main_Page#Download)
@@ -50,21 +50,21 @@ We recommend the following steps for installing the dependencies
     
     On Ubuntu:
     
-    `sudo apt install libeigen3-dev`
+    `$ sudo apt install libeigen3-dev`
     
     On MacOSX: 
     
-    `brew install eigen`
+    `$ brew install eigen`
     
 2) Install pkg-config
 
     On Ubuntu:
     
-    `sudo apt install pkg-config`
+    `$ sudo apt install pkg-config`
     
     On MacOSX
     
-    `brew install pkg-config`
+    `$ brew install pkg-config`
   
 Additional Python dependencies are automatically handled when installing the `graphkernels` package: 
 
