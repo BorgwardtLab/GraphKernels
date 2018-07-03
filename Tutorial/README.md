@@ -55,4 +55,8 @@ Here is a complete list of all the graph kernels that can be computed with our p
 | Geometric random walk kernel | CalculateGeometricRandomWalkKernel |	λ |
 | Exponential random walk kernel | CalculateExponentialRandomWalkKernel	| β |
 | k-step random walk kernel | CalculateKStepRandomWalkKernel |	λ0, λ1, ..., λk |
+| Shortest path kernel | CalculateShortestPathKernel | None |
 | Weisfeiler-Lehman subtree kernel | CalculateWLKernel | h | 
+| Graphlet kernel | CalculateGraphletKernel | k |
+| Graphlet kernel with connected graphlets | CalculateConnectedGraphletKernel | k |
+
