@@ -48,7 +48,7 @@ def GetGraphInfo(g):
     if 'label' in g.vs.attributes():
         v_attr_name = 'label'
     else:
-        v_attr_name = gs.vs.attributes()[0]
+        v_attr_name = g.vs.attributes()[0]
 
     v_attr_values = np.asarray(g.vs[v_attr_name]).reshape(len(g.vs),1).astype(int)
 
