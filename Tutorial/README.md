@@ -11,7 +11,7 @@ The file `demo_mutag.py` can be executed as
 The script will compute all the available kernels on the benchmark MUTAG dataset. 
 
 The data that the graph kernels functions require as input, should be
-a list of [igraph](http://igraph.org) objects, as provided in the file [`data.mutag`](data.mutag).
+a list of graphML objects, as provided in the file [`data.mutag`](data.mutag).
 This example file is available here in the tutorial, but is also
 included in the downloadable package.
 
