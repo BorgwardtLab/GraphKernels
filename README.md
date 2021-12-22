@@ -9,7 +9,7 @@ A large collection of source code for computing kernels on graph. The src folder
 
 `graphkernels` is a Python package for computing various graph kernels. 
 
-For the C++ implementation and R package, please refer to https://github.com/mahito-sugiyama/graph-kernels.
+For the C++ implementation and R package, please refer to [https://github.com/BorgwardtLab/graph-kernels](https://github.com/mahito-sugiyama/graph-kernels).
 
 The Python and R packages are described at:
 
@@ -98,3 +98,6 @@ doi = {10.1093/bioinformatics/btx602},
 URL = {http://dx.doi.org/10.1093/bioinformatics/btx602},
 }
 ```
+# Acknowledgements
+
+The development of the graphkernels open access software package was financially supported by the Horizon 2020/CDS-QUAMRI/634541 project. This support is gratefully acknowledged.
