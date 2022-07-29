@@ -6,12 +6,25 @@ setup.py file for SWIG
 
 from setuptools import setup, Extension
 
+import importlib
 import subprocess
 import sys
+
 
 # Solve the chicken-and-egg problem of requiring packages *before* the
 # script has been parsed.
 for package in ['numpy', 'pkgconfig']:
+
+    # Don't try to install packages that already exist.
+    try:
+        mod = importlib.import_module(package)
+        continue
+    except ModuleNotFoundError:
+        pass
+
+    if package in sys.modules:
+        continue
+
     # Inside a `virtualenv`, we are *not* allowed to install packages as
     # a regular user.
     if hasattr(sys, 'real_prefix'):

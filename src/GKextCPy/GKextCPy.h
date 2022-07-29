@@ -13,10 +13,10 @@ Header file for the graphkernels module
 #include <numeric>
 #include <stdio.h>
 #include <string.h>
-#include <eigen3/Eigen/Core>
-#include <eigen3/Eigen/Sparse>
-#include <eigen3/Eigen/LU>
-#include <eigen3/Eigen/Eigenvalues>
+#include <Eigen/Core>
+#include <Eigen/Sparse>
+#include <Eigen/LU>
+#include <Eigen/Eigenvalues>
 #include <sys/types.h>
 #include <sys/time.h>
 #include <sys/resource.h>
