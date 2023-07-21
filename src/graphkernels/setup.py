@@ -9,6 +9,6 @@ setup(name = 'graphkernels',
 	license = 'ETH Zurich',
 	packages = ['graphkernels'],
 
-	install_requires = ['GKextCPy','python-igraph', 'numpy'],
+	install_requires = ['GKextCPy','igraph', 'numpy'],
 	package_data={'graphkernels': ['data.mutag']},
 	) # maybe to check github url
