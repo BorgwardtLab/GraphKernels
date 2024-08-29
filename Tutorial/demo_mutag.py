@@ -11,10 +11,10 @@ import numpy as np
 
 # Load data
 # comment next line if data.mutag is in a different folder
-mutag_list = np.load("graphkernels/data.mutag")
+mutag_list = np.load("graphkernels/data.mutag", allow_pickle=True)
 
 # Uncomment next line if data.mutag is in your current folder
-#mutag_list = np.load("data.mutag")
+#mutag_list = np.load("data.mutag", allow_pickle=True)
 
 ### ALL KERNELS COMPUTE
 K1 = gk.CalculateEdgeHistKernel(mutag_list)
